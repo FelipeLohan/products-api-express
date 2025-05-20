@@ -1,21 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ES6",                   
-    "module": "commonjs",                
-    "esModuleInterop": true,             
-    "skipLibCheck": true,                
-    "forceConsistentCasingInFileNames": true, 
-    "outDir": "./dist",                  
-    "rootDir": "./src",                  
-    "strict": true,                     
-    "resolveJsonModule": true,           
-    "typeRoots": ["node_modules/@types"], 
-    "types": ["node", "express"]         
+    "target": "ES6",                    // Alvo de compilação para ECMAScript 6
+    "module": "ESNext",                  // Configuração para módulos ES
+    "esModuleInterop": true,             // Permite interoperabilidade entre CommonJS e ESModules
+    "skipLibCheck": true,                // Ignora checagem de tipos de bibliotecas
+    "forceConsistentCasingInFileNames": true, // Consistência no uso de maiúsculas e minúsculas nos nomes dos arquivos
+    "outDir": "./dist",                  // Diretório de saída para arquivos compilados
+    "rootDir": "./src",                  // Diretório de origem dos arquivos TypeScript
+    "strict": true,                      // Ativa verificações estritas de tipo
+    "typeRoots": ["node_modules/@types"], // Diretório dos tipos
+    "types": ["node", "express"]         // Tipos para Node.js e Express
   },
   "include": [
-    "src/**/*.ts"                       
+    "src/**/*.ts"                        // Incluir todos os arquivos .ts dentro da pasta src
   ],
   "exclude": [
-    "node_modules"                       
+    "node_modules"                       // Excluir a pasta node_modules
   ]
 }
