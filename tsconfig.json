@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES6",                    // Alvo de compilação para ECMAScript 6
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",                
-    "esModuleInterop": true,             // Permite interoperabilidade entre CommonJS e ESModules
-    "skipLibCheck": true,                // Ignora checagem de tipos de bibliotecas
-    "forceConsistentCasingInFileNames": true, // Consistência no uso de maiúsculas e minúsculas nos nomes dos arquivos
-    "outDir": "./dist",                  // Diretório de saída para arquivos compilados
-    "rootDir": "./src",                  // Diretório de origem dos arquivos TypeScript
-    "strict": true,                      // Ativa verificações estritas de tipo
-    "typeRoots": ["node_modules/@types"], // Diretório dos tipos
-    "types": ["node", "express"]         // Tipos para Node.js e Express
+    "target": "ES2022",                   // Alvo de compilação para ECMAScript 2022
+    "module": "NodeNext",                  // Configuração de módulo para compatibilidade com Node.js ES Modules
+    "moduleResolution": "nodenext",        // Resolução de módulos compatível com Node.js
+    "esModuleInterop": true,               // Permite interoperabilidade entre CommonJS e ESModules
+    "skipLibCheck": true,                  // Ignora checagem de tipos em bibliotecas
+    "forceConsistentCasingInFileNames": true, 
+    "outDir": "./dist",                    // Diretório de saída dos arquivos compilados
+    "rootDir": "./src",                    // Diretório de origem dos arquivos TypeScript
+    "strict": true,                        // Ativa verificações estritas de tipo
+    "resolveJsonModule": true,             // Permite a importação de arquivos JSON
+    "typeRoots": ["node_modules/@types"], 
+    "types": ["node", "express"]           // Tipos para Node.js e Express
   },
   "include": [
-    "src/**/*.ts"                        // Incluir todos os arquivos .ts dentro da pasta src
+    "src/**/*.ts"                          // Incluir todos os arquivos .ts dentro da pasta src
   ],
   "exclude": [
-    "node_modules"                       // Excluir a pasta node_modules
+    "node_modules"                         // Excluir a pasta node_modules
   ]
 }
