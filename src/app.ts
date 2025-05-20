@@ -5,6 +5,7 @@ import "dotenv/config";
 import databaseConnection from "./config/databaseConection.js";
 import product from "./models/Product.js";
 import category from "./models/Category.js";
+import ProductController from "./controllers/productControllers.js";
 
 const app = express();
 app.use(express.json())
@@ -19,20 +20,9 @@ conection.once("open", () => {
   console.log("Connection Oppened");
 });
 
-app.get("/", async (req: Request, res: Response) => {
-  const productsData = await product.find();
-  res.status(200).json({"message": "success", "status": 200, "data": productsData});
-})
+app.get("/v1/api/products", ProductController.findAllProducts);
 
-app.post("/v1/api/products", async (req: Request, res: Response) => {
-  const newProduct = req.body;
-  try{
-    const newProductData = await product.create(newProduct);
-    res.status(200).json({message: "success", status: 201, data: newProductData});
-  }catch(e){
-    res.status(500).json({message: "error", status: 500, description: `${e}`})
-  }
-});
+app.post("/v1/api/products", ProductController.newProduct);
 
 app.post("/v1/api/categories", async (req: Request, res: Response) => {
   const newCategory = req.body;
