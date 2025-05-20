@@ -1,6 +1,7 @@
 import express from "express";
 import { Request, Response } from "express";
 import { DOMAIN, PORT } from "./utils/system.js";
+import "dotenv/config";
 
 const app = express();
 
