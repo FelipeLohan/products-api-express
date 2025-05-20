@@ -30,7 +30,7 @@ app.post("/v1/api/products", async (req: Request, res: Response) => {
     const newProductData = await product.create(newProduct);
     res.status(200).json({message: "success", status: 201, data: newProductData});
   }catch(e){
-    res.send(500).json({message: "error", status: 500, description: `${e}`})
+    res.status(500).json({message: "error", status: 500, description: `${e}`})
   }
 });
 
@@ -40,7 +40,7 @@ app.post("/v1/api/categories", async (req: Request, res: Response) => {
     const newCategoryData = await category.create(newCategory);
     res.status(200).json({message: "success", status: 201, data: newCategoryData});
   }catch(e){
-    res.send(500).json({message: "error", status: 500, description: `${e}`})
+    res.status(500).json({message: "error", status: 500, description: `${e}`})
   }
 });
 
