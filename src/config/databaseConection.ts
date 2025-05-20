@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
-const DB_CONNECTION_STRING: string = process.env.DB_CONNECTION_STRING!
+const DB_CONNECTION: string = process.env.DB_CONNECTION!
 
 async function databaseConnection(){
-  mongoose.connect(DB_CONNECTION_STRING);
+  mongoose.connect(DB_CONNECTION);
 
   return mongoose.connection;
 }
