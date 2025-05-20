@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES6",                    // Alvo de compilação para ECMAScript 6
-    "module": "ESNext",                  // Configuração para módulos ES
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",                
     "esModuleInterop": true,             // Permite interoperabilidade entre CommonJS e ESModules
     "skipLibCheck": true,                // Ignora checagem de tipos de bibliotecas
     "forceConsistentCasingInFileNames": true, // Consistência no uso de maiúsculas e minúsculas nos nomes dos arquivos
