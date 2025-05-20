@@ -1,0 +1,10 @@
+import mongoose from "mongoose";
+
+const categorySchema = new mongoose.Schema({
+  id: {type: mongoose.Schema.Types.ObjectId},
+  name: { type: String, required: [true, "The name of category is required"]}
+})
+
+const category = mongoose.model("categories", categorySchema);
+
+export default category;
