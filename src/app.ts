@@ -6,6 +6,7 @@ import databaseConnection from "./config/databaseConection.js";
 import product from "./models/Product.js";
 import category from "./models/Category.js";
 import ProductController from "./controllers/productControllers.js";
+import CategoryController from "./controllers/categoryControllers.js";
 
 const app = express();
 app.use(express.json())
@@ -21,18 +22,10 @@ conection.once("open", () => {
 });
 
 app.get("/v1/api/products", ProductController.findAllProducts);
-
 app.post("/v1/api/products", ProductController.newProduct);
 
-app.post("/v1/api/categories", async (req: Request, res: Response) => {
-  const newCategory = req.body;
-  try{
-    const newCategoryData = await category.create(newCategory);
-    res.status(200).json({message: "success", status: 201, data: newCategoryData});
-  }catch(e){
-    res.status(500).json({message: "error", status: 500, description: `${e}`})
-  }
-});
+app.get("/v1/api/categories", CategoryController.findAllCategories);
+app.post("/v1/api/categories", CategoryController.newCategory);
 
 app.listen(PORT, () => {
   console.log(`Server started in: ${DOMAIN}`);
