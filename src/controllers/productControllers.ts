@@ -15,6 +15,17 @@ class ProductController {
     }
   };
 
+  static findById = async (req: Request , res: Response) => {
+    const productId = req.params.id;
+    try{
+      const productData = await product.findById(productId);
+      res.status(200).json({"message": "success", "status": 200, "data": productData});
+    }catch(e){
+      res.status(500).json({"message": "fail", "status": 500, "description": `${e}`});
+    }
+
+  };
+
   static newProduct = async (req: Request, res: Response) => {
     const newProduct = req.body;
     try {
