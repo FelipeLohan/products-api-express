@@ -15,15 +15,18 @@ class ProductController {
     }
   };
 
-  static findById = async (req: Request , res: Response) => {
+  static findById = async (req: Request, res: Response) => {
     const productId = req.params.id;
-    try{
+    try {
       const productData = await product.findById(productId);
-      res.status(200).json({"message": "success", "status": 200, "data": productData});
-    }catch(e){
-      res.status(500).json({"message": "fail", "status": 500, "description": `${e}`});
+      res
+        .status(200)
+        .json({ message: "success", status: 200, data: productData });
+    } catch (e) {
+      res
+        .status(500)
+        .json({ message: "fail", status: 500, description: `${e}` });
     }
-
   };
 
   static newProduct = async (req: Request, res: Response) => {
@@ -40,25 +43,41 @@ class ProductController {
     }
   };
 
-  static updateProduct = async (req: Request , res: Response) => {
+  static updateProduct = async (req: Request, res: Response) => {
     const productId = req.params.id;
     const productBody = req.body;
 
     try {
-      const updatedProduct = await product.findByIdAndUpdate(productId, productBody);
+      const updatedProduct = await product.findByIdAndUpdate(
+        productId,
+        productBody
+      );
       res.status(201).json({
-        "message": "success",
-        "status": 201,
-        "data": updatedProduct
+        message: "success",
+        status: 201,
+        data: updatedProduct,
       });
-    } catch (e){
+    } catch (e) {
       res.status(500).json({
-        "message": "fail",
-        "status": 500,
-        "description": `${e}`
+        message: "fail",
+        status: 500,
+        description: `${e}`,
       });
     }
-  }
+  };
+
+  static deleteProduct = async (req: Request, res: Response) => {
+    const productId = req.params.id;
+
+    try {
+      const productDeleted = await product.findByIdAndDelete(productId);
+      res.status(204).json({ message: "success", status: 200, data: {} });
+    } catch (e) {
+      res
+        .status(500)
+        .json({ message: "fail", status: 500, description: `${e}` });
+    }
+  };
 }
 
 export default ProductController;
