@@ -1,10 +1,10 @@
-import express from "express";
+import express, { Application } from "express";
 import { DOMAIN, PORT } from "./utils/system.js";
 import "dotenv/config";
 import databaseConnection from "./config/databaseConection.js";
 import routes from "./routes/index.js";
 
-const app = express();
+const app: Application = express();
 routes(app);
 
 const conection = await databaseConnection();
