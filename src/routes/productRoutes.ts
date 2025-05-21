@@ -1,7 +1,7 @@
-import express from "express";
+import express, { Router } from "express";
 import ProductController from "../controllers/productControllers.js";
 
-const productsRoutes = express.Router();
+const productsRoutes: Router = express.Router();
 
 productsRoutes.get("/v1/api/products", ProductController.findAllProducts);
 productsRoutes.post("/v1/api/products", ProductController.newProduct);
