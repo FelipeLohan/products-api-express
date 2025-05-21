@@ -39,6 +39,26 @@ class ProductController {
         .json({ message: "error", status: 500, description: `${e}` });
     }
   };
+
+  static updateProduct = async (req: Request , res: Response) => {
+    const productId = req.params.id;
+    const productBody = req.body;
+
+    try {
+      const updatedProduct = await product.findByIdAndUpdate(productId, productBody);
+      res.status(201).json({
+        "message": "success",
+        "status": 201,
+        "data": updatedProduct
+      });
+    } catch (e){
+      res.status(500).json({
+        "message": "fail",
+        "status": 500,
+        "description": `${e}`
+      });
+    }
+  }
 }
 
 export default ProductController;
