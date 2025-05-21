@@ -7,5 +7,6 @@ productsRoutes.get("/v1/api/products/:id", ProductController.findById);
 productsRoutes.get("/v1/api/products", ProductController.findAllProducts);
 productsRoutes.post("/v1/api/products", ProductController.newProduct);
 productsRoutes.put("/v1/api/products/:id", ProductController.updateProduct);
+productsRoutes.delete("/v1/api/products/:id", ProductController.deleteProduct);
 
 export default productsRoutes;
