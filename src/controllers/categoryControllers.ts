@@ -43,6 +43,29 @@ class CategoryController {
         .json({ message: "fail", status: 500, description: `${e}` });
     }
   };
+
+  static updateCategory = async (req: Request, res: Response) => {
+    const categoryBody = req.body;
+    const categoryId = req.params.id;
+
+    try {
+      const updatedcategory = await category.findByIdAndUpdate(
+        categoryId,
+        categoryBody
+      );
+      res.status(200).json({
+        message: "success",
+        status: 200,
+        data: updatedcategory,
+      });
+    } catch (e) {
+      res
+        .status(500)
+        .json({ message: "fail", status: 500, description: `${e}` });
+    }
+  };
+
+  
 }
 
 export default CategoryController;
