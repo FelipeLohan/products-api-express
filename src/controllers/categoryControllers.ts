@@ -65,7 +65,24 @@ class CategoryController {
     }
   };
 
-  
+  static deleteCategory = async ( req: Request , res: Response ) => {
+    const categoryId = req.params.id;
+
+    try {
+      await category.findByIdAndDelete(categoryId);
+      res.status(204).json({
+        message: "success",
+        status: 204
+      });
+    } catch (e){
+      res.status(500).json({
+        "message": "fail",
+        "status": 500,
+        "description": `${e}`
+      })
+    } 
+  }
+
 }
 
 export default CategoryController;
