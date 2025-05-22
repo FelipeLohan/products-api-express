@@ -1,13 +1,24 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
+import CustomError from "../utils/CustomError.js";
 
-const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  const statusCode = err.statusCode || 500;
-  const message = err.message || 'Internal Server Error';
-  res.status(statusCode).json({
-    message,
-    status: statusCode,
-    description: err.description || '',
+// Middleware de tratamento de erros
+  const errorHandler = (err: any, req: any, res: any, next: any) => {
+  console.error(err);  
+
+  // Se for uma instância do CustomError
+  if (err instanceof CustomError) {
+    return res.status(err.statusCode).json({
+      message: err.message,
+      status: err.statusCode,
+      description: err.description,
+    });
+  }
+
+  // Erros genéricos
+  res.status(500).json({
+    message: "Internal server error",
+    status: 500,
+    description: err.message || "Something went wrong.",
   });
 };
 
