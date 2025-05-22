@@ -1,5 +1,6 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import category from "../models/Category.js";
+import CustomError from "../utils/CustomError.js";
 
 class CategoryController {
   static findAllCategories = async (req: Request, res: Response) => {
@@ -15,18 +16,20 @@ class CategoryController {
     }
   };
 
-  static findById = async (req: Request, res: Response) => {
+  static findById = async (req: Request, res: Response, next: NextFunction) => {
     const categoryId = req.params.id;
-
+    
     try {
       const categoriesData = await category.findById(categoryId);
+      
+      if(!categoriesData) {
+        throw new CustomError("Not found", 404, "This id is invalid")
+      }
       res
         .status(200)
         .json({ message: "success", status: 200, data: categoriesData });
     } catch (e) {
-      res
-        .status(500)
-        .json({ message: "fail", status: 500, description: `${e}` });
+      next(e)
     }
   };
 
