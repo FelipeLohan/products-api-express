@@ -16,10 +16,10 @@ class CategoryController {
   };
 
   static findById = async (req: Request, res: Response) => {
-    const productId = req.params.id;
+    const categoryId = req.params.id;
 
     try {
-      const categoriesData = await category.findById(productId);
+      const categoriesData = await category.findById(categoryId);
       res
         .status(200)
         .json({ message: "success", status: 200, data: categoriesData });
