@@ -1,5 +1,6 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import product from "../models/Product.js";
+import CustomError from "../utils/CustomError.js";
 
 class ProductController {
   static findAllProducts = async (req: Request, res: Response) => {
@@ -15,14 +16,20 @@ class ProductController {
     }
   };
 
-  static findById = async (req: Request, res: Response) => {
+  static findById = async (req: Request, res: Response, next: NextFunction) => {
     const productId = req.params.id;
     try {
       const productData = await product.findById(productId);
+
+      if (!productData) {
+        throw new CustomError("Not found", 404, "This id is invalid");
+      }
+      
       res
         .status(200)
         .json({ message: "success", status: 200, data: productData });
     } catch (e) {
+      next(e);
       res
         .status(500)
         .json({ message: "fail", status: 500, description: `${e}` });
