@@ -5,7 +5,7 @@ const categorySchema = new mongoose.Schema(
     id: { type: mongoose.Schema.Types.ObjectId },
     name: {
       type: String,
-      unique: true,
+      unique: [true, "This category name exists."],
       required: [true, "The name of category is required"],
     },
   },
