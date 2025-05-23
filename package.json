@@ -6,12 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsc && nodemon dist/app.js",
-    "start": "node dist/app.js"
+    "start": "tsc && node dist/app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Felipe Lohan",
+  "license": "MIT",
+  "description": "Product API",
   "dependencies": {
     "@types/express": "^5.0.2",
     "dotenv": "^16.5.0",
