@@ -18,18 +18,18 @@ class CategoryController {
 
   static findById = async (req: Request, res: Response, next: NextFunction) => {
     const categoryId = req.params.id;
-    
+
     try {
       const categoriesData = await category.findById(categoryId);
-      
-      if(!categoriesData) {
-        throw new CustomError("Not found", 404, "This id is invalid")
+
+      if (!categoriesData) {
+        throw new CustomError("Not found", 404, "This id is invalid");
       }
       res
         .status(200)
         .json({ message: "success", status: 200, data: categoriesData });
     } catch (e) {
-      next(e)
+      next(e);
     }
   };
 
@@ -68,24 +68,24 @@ class CategoryController {
     }
   };
 
-  static deleteCategory = async ( req: Request , res: Response ) => {
+  static deleteCategory = async (req: Request, res: Response) => {
     const categoryId = req.params.id;
 
     try {
       await category.findByIdAndDelete(categoryId);
+
       res.status(204).json({
         message: "success",
-        status: 204
+        status: 204,
       });
-    } catch (e){
+    } catch (e) {
       res.status(500).json({
-        "message": "fail",
-        "status": 500,
-        "description": `${e}`
-      })
-    } 
-  }
-
+        message: "fail",
+        status: 500,
+        description: `${e}`,
+      });
+    }
+  };
 }
 
 export default CategoryController;
