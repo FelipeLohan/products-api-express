@@ -3,6 +3,8 @@ import category from "../models/Category.js";
 import CustomError from "../utils/CustomError.js";
 
 class CategoryController {
+
+  // /v1/api/categories - FindAll categories
   static findAllCategories = async (req: Request, res: Response) => {
     try {
       const categoriesData = await category.find();
@@ -16,6 +18,7 @@ class CategoryController {
     }
   };
 
+  // /v1/api/categories/:id - FindById category
   static findById = async (req: Request, res: Response, next: NextFunction) => {
     const categoryId = req.params.id;
 
@@ -33,6 +36,7 @@ class CategoryController {
     }
   };
 
+  // /v1/api/categories - New category
   static newCategory = async (req: Request, res: Response) => {
     const newCategory = req.body;
     try {
@@ -47,6 +51,7 @@ class CategoryController {
     }
   };
 
+  // /v1/api/categories/:id - Update category
   static updateCategory = async (req: Request, res: Response) => {
     const categoryBody = req.body;
     const categoryId = req.params.id;
@@ -68,6 +73,7 @@ class CategoryController {
     }
   };
 
+  // /v1/api/categories/:id - Delete category
   static deleteCategory = async (req: Request, res: Response) => {
     const categoryId = req.params.id;
 

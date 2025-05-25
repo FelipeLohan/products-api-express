@@ -3,6 +3,8 @@ import user from "../models/User.js";
 import CustomError from "../utils/CustomError.js";
 
 class UserController {
+
+  // /v1/api/users - FindAll Users
   static findAllUsers = async ( req: Request , res: Response ) => {
     try {
       const usersData = await user.find();

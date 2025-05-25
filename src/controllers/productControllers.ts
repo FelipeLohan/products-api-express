@@ -3,6 +3,8 @@ import product from "../models/Product.js";
 import CustomError from "../utils/CustomError.js";
 
 class ProductController {
+
+  // /v1/api/products - FindAll Products
   static findAllProducts = async (req: Request, res: Response) => {
     try {
       const productsData = await product.find();
@@ -16,6 +18,7 @@ class ProductController {
     }
   };
 
+  // /v1/api/products/:id - FindById product
   static findById = async (req: Request, res: Response, next: NextFunction) => {
     const productId = req.params.id;
     try {
@@ -36,6 +39,7 @@ class ProductController {
     }
   };
 
+  // /v1/api/products - New Product 
   static newProduct = async (req: Request, res: Response) => {
     const newProduct = req.body;
     try {
@@ -50,6 +54,7 @@ class ProductController {
     }
   };
 
+  // /v1/api/products/:id - Update Product
   static updateProduct = async (req: Request, res: Response) => {
     const productId = req.params.id;
     const productBody = req.body;
@@ -73,6 +78,7 @@ class ProductController {
     }
   };
 
+  // /v1/api/products/:id - Delete Product
   static deleteProduct = async (req: Request, res: Response) => {
     const productId = req.params.id;
 
